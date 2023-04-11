@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -7,7 +8,11 @@ namespace VehicleApocolypse
 {
     public class MB_GameManager : MonoBehaviour
     {
+        public static MB_GameManager I_GameManager { get; private set; }
+
+        public GameObject PlayerVehicle;
         MB_CharacterBase Player;
+        public MB_CharacterBase _PlayerRef { get { return Player; } }
         public GameObject ItemSelectMenu;
 
         public MB_Button_ItemSelect[] ItemSelects;
@@ -15,9 +20,21 @@ namespace VehicleApocolypse
         [SerializeField]
         private List<SO_Item> ItemsList = new List<SO_Item>();
 
-        private void OnEnable()
+
+        private void Awake()
         {
-            Player = GameObject.FindGameObjectWithTag("Player").GetComponent<MB_CharacterBase>();
+            if (I_GameManager != null && I_GameManager != this)
+            {
+                Destroy(this);
+            }
+            else
+            {
+                I_GameManager = this;
+            }
+
+            GameObject newPlayer = Instantiate(PlayerVehicle);
+
+            Player = newPlayer.GetComponent<MB_CharacterBase>();
             ItemSelectMenu.SetActive(false);
             Player.A_LevelIncrease += V_ItemSelect;
         }

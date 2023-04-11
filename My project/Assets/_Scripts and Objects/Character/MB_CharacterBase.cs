@@ -35,6 +35,7 @@ namespace VehicleApocolypse
         public bool b_DebugOn;
         public bool b_InvincibilityOn;
 
+
         //------------HEALTH------------//
         [Header("Health")]
         [SerializeField]
@@ -166,9 +167,7 @@ namespace VehicleApocolypse
                 return;
             }
 
-            GameObject GO_newItem = Instantiate(lI_Item[0].GO_ItemPrefab, transform.position, Quaternion.identity);
-            GO_newItem.transform.parent = this.transform;
-
+            GameObject GO_newItem = Instantiate(newItem.GO_ItemPrefab, transform.position, transform.rotation, this.GetComponent<Transform>());
             GO_newItem.GetComponent<MB_ItemBase>().GetCharacterUnit(this);
             D_ItemAcquired.Add(newItem.name, GO_newItem.GetComponent<MB_ItemBase>());
 

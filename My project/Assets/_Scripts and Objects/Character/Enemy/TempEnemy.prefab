@@ -147,6 +147,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eCT_CharacterType: 1
+  b_DebugOn: 0
+  b_InvincibilityOn: 0
   f_Health_Max: 10
   f_Health_Curr: 0
   UE_OnDamaged:
@@ -176,5 +178,6 @@ MonoBehaviour:
   f_Experience_Curr: 0
   f_Experience_ToLevel: 0
   f_Level_Curr: 0
+  lI_Item: []
   _Rb2D: {fileID: 0}
   _T_Player: {fileID: 0}

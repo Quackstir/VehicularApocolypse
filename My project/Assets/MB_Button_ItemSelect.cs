@@ -11,18 +11,16 @@ namespace VehicleApocolypse
         public SO_Item I_Item;
         public TMP_Text _TextMeshPro;
 
-
         private void OnEnable()
         {
-            Player = GameObject.FindGameObjectWithTag("Player").GetComponent<MB_CharacterBase>();
+            //Player = MB_GameManager.I_GameManager._PlayerRef;
             _TextMeshPro = GetComponentInChildren<TMP_Text>();
             _TextMeshPro.text = I_Item.s_Name;
         }
 
-
         public void V_GiveItem()
         {
-            Player.V_AddItem(I_Item);
+            MB_GameManager.I_GameManager._PlayerRef.V_AddItem(I_Item);
             Time.timeScale = 1;
         }
     }
