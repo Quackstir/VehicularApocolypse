@@ -184,37 +184,6 @@ namespace VehicleApocolypse
             }
         }
 
-        //----------ITEM FUNCTIONS----------//
-        //public void AddItem(int AmtAdd, ItemScriptableObject Item)
-        //{
-        //    if (ItemsDictionary.ContainsKey(Item.Name))
-        //    {
-        //        ItemsDictionary[Item.Name].IncreaseStackAmt(AmtAdd);
-        //    }
-        //    else
-        //    {
-        //        GameObject newItem = Instantiate(Item.ItemPrefab);
-        //        newItem.transform.parent = this.transform;
-        //        ItemsDictionary.Add(Item.Name, newItem.GetComponent<ItemBase>());
-        //        newItem.GetComponent<ItemBase>().GetCharacterUnit(this);
-        //    }
-
-        //    if (ItemRarityAmountDictionary.ContainsKey(Item.itemRarity))
-        //    {
-        //        ItemRarityAmountDictionary[item.itemRarity] += AmtAdd;
-        //    }
-        //    else
-        //    {
-        //        ItemRarityAmountDictionary.Add(item.itemRarity, AmtAdd);
-        //    }
-
-        //    if (AddItemAction != null)
-        //        AddItemAction(AmtAdd);
-
-        //    UpdateVariables();
-        //}
-
-
         //----------HEALTH FUNCTIONS----------//
         public virtual void V_Healing(float Heal)
         {

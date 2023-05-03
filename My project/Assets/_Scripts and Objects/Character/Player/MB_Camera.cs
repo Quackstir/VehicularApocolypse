@@ -11,7 +11,7 @@ namespace VehicleApocolypse
         // Start is called before the first frame update
         void Start()
         {
-            _T_Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+            _T_Player = MB_GameManager.I_GameManager._PlayerRef.GetComponent<Transform>();
         }
 
         private void LateUpdate()
