@@ -1089,7 +1089,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eCT_CharacterType: 0
   b_DebugOn: 0
-  b_InvincibilityOn: 1
+  b_InvincibilityOn: 0
   f_Health_Max: 100
   f_Health_Curr: 5
   UE_OnDamaged:

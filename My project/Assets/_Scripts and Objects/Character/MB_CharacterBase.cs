@@ -54,6 +54,7 @@ namespace VehicleApocolypse
         //----------------
         public Action<float> A_Heal;
         public Action<float> A_Damage;
+        public Action<float, float> A_HealthUpdate;
         public Action<float> A_Death;
         //----------------
         [SerializeField]
@@ -132,6 +133,9 @@ namespace VehicleApocolypse
                 _PI_Player = this.GetComponent<PlayerInput>();
 
             f_Health_Curr = f_Health_Max;
+
+            if (A_HealthUpdate != null)
+                A_HealthUpdate(f_Health_Curr, f_Health_Max);
         }
 
         //----------LEVEL FUNCTIONS----------//
@@ -193,6 +197,9 @@ namespace VehicleApocolypse
             {
                 f_Health_Curr = f_Health_Max;
             }
+
+            if (A_HealthUpdate != null)
+                A_HealthUpdate(f_Health_Curr, f_Health_Max);
         }
 
         public virtual void V_Damage(float Damage)
@@ -206,6 +213,9 @@ namespace VehicleApocolypse
 
             if (A_Damage != null)
                 A_Damage(Damage);
+
+            if (A_HealthUpdate != null)
+                A_HealthUpdate(f_Health_Curr, f_Health_Max);
 
             if (f_Health_Curr <= 0)
                 V_Death();

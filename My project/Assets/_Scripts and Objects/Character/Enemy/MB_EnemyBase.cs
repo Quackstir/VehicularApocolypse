@@ -45,8 +45,8 @@ namespace VehicleApocolypse
         {
             while (b_OnPlayer)
             {
-                yield return new WaitForSeconds(1);
-                Player.V_Damage(5);
+                yield return new WaitForSeconds(0.5f);
+                Player.V_Damage(1);
                 yield return null;
             }
 
