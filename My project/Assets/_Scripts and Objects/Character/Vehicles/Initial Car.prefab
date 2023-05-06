@@ -143,7 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numObjects: 10
   prefab: {fileID: 2668951471902560629, guid: 60c4732ab7da9324f85c25352afc53a8, type: 3}
-  Radius: 20
+  Radius: 50
   f_TimeBetweenSpawn: 10
 --- !u!1 &8991795299112402775
 GameObject:
@@ -1012,7 +1012,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &8991795300254668660
 MonoBehaviour:
   m_ObjectHideFlags: 0
