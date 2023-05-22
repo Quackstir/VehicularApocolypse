@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.Android;
 
 
 public enum InterpolType
@@ -34,6 +35,7 @@ namespace VehicleApocolypse
         public CharacterType eCT_CharacterType;
         public bool b_DebugOn;
         public bool b_InvincibilityOn;
+        public float f_carAngle;
 
 
         //------------HEALTH------------//
@@ -329,14 +331,14 @@ namespace VehicleApocolypse
                         _Rb2D.velocity = Vector2.Lerp(_Rb2D.velocity, v2_InputMoveVector * f_MoveSpeed, Time.deltaTime * f_Acceleration);
                         Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, v2_InputMoveVector);
                         transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, Time.deltaTime * f_RotationSpeed);
-                        float carAngle = Vector2.Angle(v2_InputMoveVector, _Rb2D.velocity);
+                        f_carAngle = Vector2.Angle(v2_InputMoveVector, _Rb2D.velocity);
                         break;
 
                     case InterpolType.LerpForward:
                         _Rb2D.velocity = Vector2.Lerp(_Rb2D.velocity, transform.up * f_MoveSpeed * v2_InputMoveVector.magnitude, Time.deltaTime * f_Acceleration);
                         toRotation = Quaternion.LookRotation(Vector3.forward, v2_InputMoveVector);
                         transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, Time.deltaTime * f_RotationSpeed);
-                        carAngle = Vector2.Angle(v2_InputMoveVector, _Rb2D.velocity);
+                        f_carAngle = Vector2.Angle(v2_InputMoveVector, _Rb2D.velocity);
                         break;
 
                     case InterpolType.Rigidbody2DMoveTowards:
@@ -355,18 +357,19 @@ namespace VehicleApocolypse
                 if (A_Movement != null)
                     A_Movement(v2_InputMoveVector);
 
-                //if (carAngle > f_DriftAngle)
-                //{
-                //    Debug.Log("DRIFITNG");
-                //    V_Drifting();
-                //}
-                //else
-                //{
-                //    foreach (var item in go_Tires)
-                //    {
-                //        item.SetActive(false);
-                //    }
-                //}
+                if (f_carAngle > f_DriftAngle)
+                {
+                    Debug.Log("DRIFITNG");
+                    V_Drifting();
+                }
+                else
+                {
+                    foreach (var item in go_Tires)
+                    {
+                        var PS = item.GetComponent<ParticleSystem>().emission;
+                        PS.rateOverDistance = 0;
+                    }
+                }
 
                 yield return null;
             }
@@ -382,7 +385,8 @@ namespace VehicleApocolypse
         {
             foreach (var item in go_Tires)
             {
-                item.SetActive(true);
+                var PS = item.GetComponent<ParticleSystem>().emission;
+                PS.rateOverDistance = 10;
             }
         }
 

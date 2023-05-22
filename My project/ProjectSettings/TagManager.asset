@@ -43,3 +43,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Vehicles
+    uniqueID: 1793148179
+    locked: 0
+  - name: PickUps
+    uniqueID: 716743707
+    locked: 0
+  - name: Background
+    uniqueID: 3766562677
+    locked: 0
