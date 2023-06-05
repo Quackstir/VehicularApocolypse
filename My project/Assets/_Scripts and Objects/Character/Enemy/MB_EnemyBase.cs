@@ -17,10 +17,13 @@ namespace VehicleApocolypse
         }
 
         // Update is called once per frame
-        void Update()
+        void FixedUpdate()
         {
             if (_T_Player != null)
-                V_Moving(_T_Player.position);
+            {
+                Vector2 gotowards = _T_Player.position - transform.position;
+                V_Moving(gotowards.normalized);
+            }
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
