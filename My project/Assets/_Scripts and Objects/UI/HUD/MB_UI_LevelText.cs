@@ -11,8 +11,8 @@ namespace VehicleApocolypse
         MB_CharacterBase Player;
 
         public TMP_Text TempText_Level;
-        public TMP_Text TempText_Experience;
         public TMP_Text TempText_Health;
+        public Image TempImage_ExperienceBar;
 
         private void Start()
         {
@@ -34,7 +34,7 @@ namespace VehicleApocolypse
 
         private void UpdateExperienceText(int ExperienceCurr, int ExperienceToLevel)
         {
-            TempText_Experience.text = ExperienceCurr.ToString() + " / " + ExperienceToLevel.ToString();
+            TempImage_ExperienceBar.fillAmount = (float)ExperienceCurr / (float)ExperienceToLevel;
         }
     }
 }
